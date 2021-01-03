@@ -4,6 +4,9 @@ public class Bioskop {
     static Scanner input = new Scanner(System.in);
     static Scanner inputC = new Scanner(System.in);
     static Scanner inputS = new Scanner(System.in);
+    static Registrasi reg = new Registrasi();
+    static BeliTiket buy = new BeliTiket();
+    static LihatFilm view = new LihatFilm();
     public static void main(String args[]){
         Scanner inputC = new Scanner(System.in);
         title();
@@ -16,14 +19,8 @@ public class Bioskop {
         staff();
     }
     
-    //calling another program for variable
-    static String userOn(){
-        Registrasi reg = new Registrasi();
-        return reg.User;
-    }
-    
     // variabel called by another program
-    public static String Akun = userOn();
+    public static String Akun;
     public static int JumTiket;
     
     static void title(){
@@ -72,7 +69,8 @@ public class Bioskop {
         }while(plh!=0);
     }
     static void Reg(){
-        
+        reg.Regis();
+        Akun = reg.User;
     }
     static void Buy(){
         
@@ -81,7 +79,7 @@ public class Bioskop {
         
     }
     static void View(){
-        
+        view.FilmSorted();
     }
     static void Search(){
         

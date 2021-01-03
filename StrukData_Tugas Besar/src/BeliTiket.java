@@ -1,21 +1,28 @@
 import java.util.Scanner;
 public class BeliTiket {
     public static void main(String[] args){
-        BeliTiket beli = new BeliTiket();
         Bioskop program = new Bioskop();
+        LihatFilm film = new LihatFilm();
+        Scanner inputc = new Scanner(System.in);
         Scanner input = new Scanner(System.in);
         char YorN;
         
         //program start
         System.out.print("Punya Akun? [Y/N]\n  : ");
-        YorN = input.next().charAt(0);
-        if(YorN ==  'Y' || YorN == 'y')
+        YorN = inputc.next().charAt(0);
+        if(YorN == 'Y'|| YorN == 'y')
         {
             if(program.Akun != null)
             {
-                
+                program.View();
+                System.out.print("Pilih Film Yang Ingin Ditonton: ");
+                int pilih = input.nextInt();
             }
+            else
+                program.Reg();
         }
+        else
+            program.Reg();
     }
     //linkedlist Node
     public class Node{
