@@ -15,6 +15,17 @@ public class Bioskop {
         }while (ulg == 'y'|ulg =='Y');
         staff();
     }
+    
+    //calling another program for variable
+    static String userOn(){
+        Registrasi reg = new Registrasi();
+        return reg.User;
+    }
+    
+    // variabel called by another program
+    public static String Akun = userOn();
+    public static int JumTiket;
+    
     static void title(){
         System.out.println("=====================================================");
         System.out.println("             Bioskop UIN SGD Informatika");
@@ -25,12 +36,12 @@ public class Bioskop {
         do
         {
             System.out.print("Akun        : ");
-            System.out.println();
+            System.out.println(Akun);
             System.out.print("Jumlah Tiket: ");
-            System.out.println();
+            System.out.println(JumTiket);
             System.out.println("_____________________________________________________");
             System.out.print("1. Registrasi\n2. Beli Tiket\n3. Gunakan Tiket"
-                    + "\n4. Lihat Film\n5. Caru Film\n0. EXIT\n  : ");
+                    + "\n4. Lihat Film\n5. Caru Film\n0. Sign Out\n  : ");
             plh = input.nextInt();
             System.out.println("_____________________________________________________");
             switch(plh)
@@ -51,7 +62,7 @@ public class Bioskop {
                     Search();
                     break;
                 case 0:
-                    EXIT();
+                    UserOff();
                     break;
                 default:
                     System.out.println("Wrong Entry\n");
@@ -75,8 +86,10 @@ public class Bioskop {
     static void Search(){
         
     }
-    static void EXIT(){
-        System.out.println("            >-Keluar Dari Menu Utama-<");
+    static void UserOff(){
+        System.out.println("                     >-Sign Out-<");
+        Akun = null;
+        JumTiket = 0;
     }
     static void staff(){
         System.out.println("____________________________________________________");
