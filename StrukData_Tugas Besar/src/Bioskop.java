@@ -22,6 +22,8 @@ public class Bioskop {
     // variabel called by another program
     public static String Akun;
     public static int JumTiket;
+    public static Hashtable Film_Genre = view.Film;
+    public static Hashtable No_Film = view.NoFilm;
     
     static void title(){
         System.out.print("\033[H\033[2J");  

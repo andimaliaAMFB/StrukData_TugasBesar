@@ -4,7 +4,6 @@ public class BeliTiket {
     public static int jumlahPembelian = 0;
     public static Bioskop program = new Bioskop();
     public static BeliTiket buy = new BeliTiket();
-    public static LihatFilm film = new LihatFilm();
     //public static void main(String[] args){
     public static void Buy(){
         Scanner inputc = new Scanner(System.in);
@@ -16,15 +15,15 @@ public class BeliTiket {
         YorN = inputc.next().charAt(0);
         if(YorN == 'Y'|| YorN == 'y')
         {
-            if(program.Akun != null)
+            if(program.Akun == null)
             {
                 System.out.println("Selamat Datang "+program.Akun);
                 String genre = null, title = null, jam = null;
                 program.View();
                 System.out.print("Pilih Film Yang Ingin Ditonton: ");
                 int pilihflm = input.nextInt();
-                genre = (String) film.NoFilm.get(pilihflm);
-                title = (String) film.Film.get(genre);
+                genre = (String) program.No_Film.get(pilihflm);
+                title = (String) program.Film_Genre.get(genre);
                 System.out.println("1. 13.00 WIB\n2. 15.45 WIB\n3. 18.30 WIB");
                 System.out.print("Pilih Jam Tayang Yang Ingin Ditonton: ");
                 int pilihjam = input.nextInt();
