@@ -1,20 +1,24 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 public class BeliTiket {
-    public static void main(String[] args){
-        Bioskop program = new Bioskop();
-        LihatFilm film = new LihatFilm();
+    public static int jumlahPembelian = 0;
+    public static Bioskop program = new Bioskop();
+    public static BeliTiket buy = new BeliTiket();
+    public static LihatFilm film = new LihatFilm();
+    //public static void main(String[] args){
+    public static void Buy(){
         Scanner inputc = new Scanner(System.in);
         Scanner input = new Scanner(System.in);
         char YorN;
         
         //program start
-        System.out.print("Punya Akun? [Y/N]\n  : ");
+        System.out.print("Apakan Ini Akun Anda? ("+program.Akun+") [Y/N]: ");
         YorN = inputc.next().charAt(0);
         if(YorN == 'Y'|| YorN == 'y')
         {
-            if(program.Akun == null)
+            if(program.Akun != null)
             {
+                System.out.println("Selamat Datang "+program.Akun);
                 String genre = null, title = null, jam = null;
                 program.View();
                 System.out.print("Pilih Film Yang Ingin Ditonton: ");
@@ -91,6 +95,8 @@ public class BeliTiket {
             //output
             //System.out.println(tiketcode+"|| + "+var+"|| "+tiketFull.get(k));
         }
+        buy.Add(tiketcode);
+        jumlahPembelian++;
     }
     //linkedlist Node
     public class Node{

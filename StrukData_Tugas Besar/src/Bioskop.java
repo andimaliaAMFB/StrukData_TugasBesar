@@ -1,3 +1,4 @@
+import java.awt.event.KeyEvent;
 import java.util.*;
 import java.lang.String;
 public class Bioskop {
@@ -9,7 +10,6 @@ public class Bioskop {
     static LihatFilm view = new LihatFilm();
     public static void main(String args[]){
         Scanner inputC = new Scanner(System.in);
-        title();
         char ulg;
         do{
             menu();
@@ -24,6 +24,8 @@ public class Bioskop {
     public static int JumTiket;
     
     static void title(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush(); 
         System.out.println("=====================================================");
         System.out.println("             Bioskop UIN SGD Informatika");
         System.out.println("=====================================================");
@@ -32,13 +34,14 @@ public class Bioskop {
         int plh = -1;
         do
         {
+            title();
             System.out.print("Akun        : ");
             System.out.println(Akun);
             System.out.print("Jumlah Tiket: ");
             System.out.println(JumTiket);
             System.out.println("_____________________________________________________");
             System.out.print("1. Registrasi\n2. Beli Tiket\n3. Gunakan Tiket"
-                    + "\n4. Lihat Film\n5. Caru Film\n0. Sign Out\n  : ");
+                    + "\n4. Lihat Film\n5. Cari Film\n0. Sign Out\n  : ");
             plh = input.nextInt();
             System.out.println("_____________________________________________________");
             switch(plh)
@@ -73,7 +76,8 @@ public class Bioskop {
         Akun = reg.User;
     }
     static void Buy(){
-        
+        buy.Buy();
+        JumTiket = buy.jumlahPembelian;
     }
     static void Use(){
         
