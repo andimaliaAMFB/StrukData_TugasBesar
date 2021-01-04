@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class BeliTiket {
     public static void main(String[] args){
         Bioskop program = new Bioskop();
@@ -12,17 +13,84 @@ public class BeliTiket {
         YorN = inputc.next().charAt(0);
         if(YorN == 'Y'|| YorN == 'y')
         {
-            if(program.Akun != null)
+            if(program.Akun == null)
             {
+                String genre = null, title = null, jam = null;
                 program.View();
                 System.out.print("Pilih Film Yang Ingin Ditonton: ");
-                int pilih = input.nextInt();
+                int pilihflm = input.nextInt();
+                genre = (String) film.NoFilm.get(pilihflm);
+                title = (String) film.Film.get(genre);
+                System.out.println("1. 13.00 WIB\n2. 15.45 WIB\n3. 18.30 WIB");
+                System.out.print("Pilih Jam Tayang Yang Ingin Ditonton: ");
+                int pilihjam = input.nextInt();
+                System.out.print("Jumlah Tiket: ");
+                int jumtiket = input.nextInt();
+                switch(pilihjam)
+                {
+                    case 1:
+                        jam = "1300";
+                        break;
+                    case 2:
+                        jam = "1545";
+                        break;
+                    case 3:
+                        jam = "1830";
+                        break;
+                    default:
+                        System.out.println("Wrong Entry\n");
+                        break;
+                }
+                //System.out.println(genre+"|| "+title+"|| "+jam);
+                Tiket(genre,title,jam,Integer.toString(jumtiket));
             }
             else
                 program.Reg();
         }
         else
             program.Reg();
+    }
+    public static void Tiket(String Genre, String Title, String Jam, String Jum){
+        char var;
+        String [] tiketCode = new String [100];
+        String tiketcode = null;
+        ArrayList<String> tiketFull = new ArrayList<String>();
+        tiketFull.add(Genre);
+        tiketFull.add(Title);
+        tiketFull.add(Jam);
+        tiketFull.add(Jum);
+        int j=0, k=0;
+        for(int i=0;i<9;i++)
+        {
+            //code of tiket be like: GGTTJJJJ-JmJm
+            //G = Genre     T = Title
+            //J = Jam       Jm = Jum
+            var = tiketFull.get(k).charAt(j);
+            j++;
+            if(j==2&&k!=2)
+            {
+                j = 0;
+                k++;
+            }
+            if(j==4&&k==2)
+            {
+                j = 0;
+                k++;
+            }
+            if(i==0)
+                tiketcode = String.valueOf(var);
+            else
+                tiketcode = tiketcode + var;
+            if(i==7)
+            {
+                if(Integer.parseInt(Jum)<10)
+                    tiketcode = tiketcode + "-0";
+                else
+                    tiketcode = tiketcode + "-";
+            }
+            //output
+            //System.out.println(tiketcode+"|| + "+var+"|| "+tiketFull.get(k));
+        }
     }
     //linkedlist Node
     public class Node{
