@@ -9,6 +9,8 @@ public class BeliTiket {
         Scanner inputc = new Scanner(System.in);
         Scanner input = new Scanner(System.in);
         char YorN;
+        if(program.JumTiket==0)
+            buy.Add("Dummy");
         
         //program start
         System.out.print("Apakan Ini Akun Anda? ("+program.Akun+") [Y/N]: ");
@@ -55,7 +57,6 @@ public class BeliTiket {
     }
     public static void Tiket(String Genre, String Title, String Jam, String Jum){
         char var;
-        String [] tiketCode = new String [100];
         String tiketcode = null;
         ArrayList<String> tiketFull = new ArrayList<String>();
         tiketFull.add(Genre);
@@ -95,7 +96,8 @@ public class BeliTiket {
             //System.out.println(tiketcode+"|| + "+var+"|| "+tiketFull.get(k));
         }
         buy.Add(tiketcode);
-        jumlahPembelian++;
+        program.JumTiket++;
+        buy.display();
     }
     //linkedlist Node
     public class Node{
@@ -121,17 +123,22 @@ public class BeliTiket {
     }
     public void display(){
         Node current=head;
-        int no = -1;
+        int no = -1,i=0;
         if(head==null)
         {
             kosong();
         }
+        System.out.println("No ||\tCode Tiket\t");
         while(current!=null)
         {
             no++;
-            if(no!=0)
-                System.out.println(no+". "+current.data);
+            if(no!=0&&no<10)
+                System.out.println(no+"  ||\t"+current.data);
+            else if(no!=0&&no<10)
+                System.out.println(no+" ||\t"+current.data);
+            program.Tiket[i] = current.data;
             current=current.next;
+            i++;
         }
     }
     void kosong(){

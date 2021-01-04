@@ -6,6 +6,7 @@ public class LihatFilm {
     static String [] Judul = {"The Shawshank Redemption", "Titanic", "Black Panther"};
     public static Hashtable Film = new Hashtable();
     public static Hashtable NoFilm = new Hashtable();
+    public static int sizeOfHash;
     public static void FilmSorted(){
         for(int i=0;i<Genre.length;i++)
         {
@@ -20,7 +21,7 @@ public class LihatFilm {
             NoFilm.put(no,SF.getKey());
             no++;
         }
-        
+        sizeOfHash = Film.size();
         //example output for Nofilm Hashtable
         //System.out.println(NoFilm.get(1));//bisa diganti 1,2,3...banyakfilm
     }

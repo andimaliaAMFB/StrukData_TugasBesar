@@ -8,6 +8,8 @@ public class Bioskop {
     static Registrasi reg = new Registrasi();
     static BeliTiket buy = new BeliTiket();
     static LihatFilm view = new LihatFilm();
+    static cari_film search = new cari_film();
+    static GunakanTiket use = new GunakanTiket();
     public static void main(String args[]){
         Scanner inputC = new Scanner(System.in);
         char ulg;
@@ -21,9 +23,10 @@ public class Bioskop {
     
     // variabel called by another program
     public static String Akun;
-    public static int JumTiket;
+    public static int JumTiket=0;
     public static Hashtable Film_Genre = view.Film;
     public static Hashtable No_Film = view.NoFilm;
+    public static String [] Tiket = new String [100];
     
     static void title(){
         System.out.print("\033[H\033[2J");  
@@ -79,16 +82,17 @@ public class Bioskop {
     }
     static void Buy(){
         buy.Buy();
-        JumTiket = buy.jumlahPembelian;
+        //JumTiket = buy.jumlahPembelian;
+        //Tiket= buy.tiketCode;
     }
     static void Use(){
-        
+        use.Use();
     }
     static void View(){
         view.FilmSorted();
     }
     static void Search(){
-        
+        search.Search();
     }
     static void UserOff(){
         System.out.println("                     >-Sign Out-<");
