@@ -53,6 +53,7 @@ public class GunakanTiket {
             }
             program.JumTiket--;
             program.Tiket = TiketUsed;
+            program.Erase = plh;
         }
     }
 }
