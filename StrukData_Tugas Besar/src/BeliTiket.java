@@ -15,7 +15,7 @@ public class BeliTiket {
         YorN = inputc.next().charAt(0);
         if(YorN == 'Y'|| YorN == 'y')
         {
-            if(program.Akun == null)
+            if(program.Akun != null)
             {
                 System.out.println("Selamat Datang "+program.Akun);
                 String genre = null, title = null, jam = null;
