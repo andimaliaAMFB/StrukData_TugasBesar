@@ -11,8 +11,9 @@ public class GunakanTiket {
         Scanner pilh = new Scanner(System.in);
         if(program.Tiket != null)
         {
-            int plh;
+            int plh = 0;
             ArrayList<String> Tiket = new ArrayList<String>();
+            ArrayList<Integer>Erase = new ArrayList<Integer>(program.Erased);
             Collections.addAll(Tiket,program.Tiket);
             int i = 1;
             for(String arr: Tiket)
@@ -23,16 +24,54 @@ public class GunakanTiket {
                 if(Tiket.get(i)==null)
                     break;
             }
+            System.out.println("Program.Erased: "+program.Erased);
+            System.out.println("Erase         : "+Erase);
+            String [] TiketUsed = new String[program.JumTiket];
+            i=0;
+            for(Integer ereser: Erase)
+            {
+                if(Erase.get(i)!=null)
+                {
+                    System.out.print(Erase.get(i)+", ");
+                }
+                i++;
+                //if(Erase.get(i)==null)
+                    //break;
+            }
+            System.out.println();
+            /*for(int x=0;x<program.JumTiket;x++)
+            {
+                if(Erase.get(i)!=null)
+                {
+                    System.out.println(Erase.get(i));
+                    if(Erase.get(i++)!=null)
+                        i++;
+                }
+                    
+                /*if(x==program.Erased.get(j))
+                {
+                    TiketUsed[x] = null;
+                    j++;
+                }
+                else
+                    TiketUsed[x] = Tiket.get(x+1);
+            }*/
             do
             {
+                System.out.println("0. Keluar dari Menu");
                 System.out.print("Tiket Apa Yang Ingin Anda Gunakan?\n  :");
-                plh = pilh.nextInt()-1;
+                plh = pilh.nextInt();
+                if(plh==0)
+                {
+                    System.out.println("  >-Keluar Dari Menu-<");
+                    break;
+                }
                 if(Tiket.get(plh)== null)
                     System.out.println("Maaf Tiket Tidak Bisa Digunakan");
                 else
                     System.out.println("Tiket Digunakan");
             }while(Tiket.get(plh)== null);
-            String [] TiketUsed = new String[program.JumTiket];
+            /*String [] TiketUsed = new String[program.JumTiket];
             System.out.println(program.JumTiket);
             for(int index=0;index<program.JumTiket;index++)
             {
@@ -50,10 +89,25 @@ public class GunakanTiket {
                 }
                 if(TiketUsed[index]!=null)
                     System.out.println((index+1)+". "+TiketUsed[index]);
+            }*/
+            //program.Tiket = TiketUsed;
+            i=0;
+            boolean sama = false;
+            for(Integer ereser: Erase)
+            {
+                if(Erase.get(i)==plh&&plh!=0)
+                {
+                    sama=true;
+                    System.out.println("plh "+plh+" = "+Erase.get(i)+" Erase.get{"+i+")");
+                    break;
+                }
+                i++;
             }
-            program.JumTiket--;
-            program.Tiket = TiketUsed;
-            program.Erase = plh;
+            if(plh!=0&&!sama)
+            {
+                Erase.add(plh);
+                program.Erased = Erase;
+            }
         }
     }
 }

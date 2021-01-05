@@ -10,7 +10,10 @@ public class BeliTiket {
         Scanner input = new Scanner(System.in);
         char YorN;
         if(program.JumTiket==0)
+        {
             buy.Add("Dummy");
+            program.Erased.add(0);
+        }
         
         //program start
         System.out.print("Apakan Ini Akun Anda? ("+program.Akun+") [Y/N]: ");
@@ -137,7 +140,7 @@ public class BeliTiket {
             else if(no!=0&&no<10)
                 System.out.println(no+" ||\t"+current.data);
             program.Tiket[i] = current.data;
-            current=current.next;
+            current = current.next;
             i++;
         }
     }

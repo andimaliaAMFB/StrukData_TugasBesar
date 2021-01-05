@@ -27,7 +27,7 @@ public class Bioskop {
     public static Hashtable Film_Genre = view.Film;
     public static Hashtable No_Film = view.NoFilm;
     public static String [] Tiket = new String [100];
-    public static int Erase;
+    public static ArrayList<Integer> Erased = new ArrayList<Integer>();
     
     static void title(){
         System.out.print("\033[H\033[2J");  
